@@ -1,0 +1,11 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+{% load static %} 
+<form action="" method="post" enctype="multipart/form-data">
+  <p><strong>Menu Name: </strong>{{ menu.name }}</p>
+  <p><strong>Description: </strong>{{ menu.description }}</p>
+  <p><strong>Price: </strong> {{ menu.price }}</p>
+  <img src="{{ menu.photo.url }}" width="200" height="200">
+</form>
+{% endblock %}

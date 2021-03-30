@@ -1,0 +1,16 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Stylist</h1>
+  {% if stylist_list %}
+  <ul>
+    {% for stylist in stylist_list %}
+      <li>
+        <a href="{{ stylist.get_absolute_url }}">{{ stylist.name }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are no stylist in this salon.</p>
+  {% endif %} 
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Beauty Hair Salon</h1>
+  <p>Welcome To Our Beauty Hair Salon!!!</p>
+  {% load static %}
+<img src="{% static 'images/hairsalonimage1.png' %}" style="width:500px;height:400px;">
+<section>
+  <ul>
+    <li>Name: Beauty Hair Salon</li>
+    <li>Ph_no: 080-1235-7892</li>
+    <li>Address: Tokyo, Ota</li>
+    <li>Business Hour: 9:00 ~ 19:00</li>
+  </ul>
+</section>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+{% load static %} 
+<form action="" method="post">
+  <p><strong>Name: </strong>{{ stylist.name }}</p>
+  <p><strong>Desgination: </strong>{{ stylist.desgination }}</p>
+  <p><strong>Message: </strong>{{ stylist.message }}</p>
+</form>
+{% endblock %}
