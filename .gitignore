@@ -66,5 +66,3 @@ venv/
 ENV/
 env.bak/
 venv.bak/
-.env6
-env6/
