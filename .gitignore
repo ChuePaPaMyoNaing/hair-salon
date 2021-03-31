@@ -61,6 +61,8 @@ db.sqlite3
 # Environments
 .env
 .venv
+.env6
+env6/
 env/
 venv/
 ENV/
