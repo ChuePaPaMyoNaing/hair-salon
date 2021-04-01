@@ -24,10 +24,11 @@ class Menu(models.Model):
 
 
 class Stylist(models.Model):
+  user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
   name = models.CharField(max_length=200)
   message = models.TextField(max_length=100)
   desgination = models.CharField(max_length=50)
-  hairMenu = models.ForeignKey('Menu', on_delete=models.SET_NULL, null=True)
+  # hairMenu = models.ForeignKey('Menu', on_delete=models.SET_NULL, null=True)
     
   class Meta:
     ordering = ["name"]
@@ -37,3 +38,17 @@ class Stylist(models.Model):
 
   def __str__(self):
     return self.name
+
+
+class Booking(models.Model):
+  menu = models.ForeignKey(Menu, on_delete=models.CASCADE)
+  username = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+  phone_no = models.CharField(max_length=20)
+  booking_date = models.DateTimeField(default=date.today)
+    
+  class Meta:
+    ordering = ["menu"]
+
+  def __str__(self):
+    return self.username
+        

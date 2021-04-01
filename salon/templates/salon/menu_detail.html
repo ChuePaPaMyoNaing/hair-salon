@@ -3,9 +3,23 @@
 {% block content %}
 {% load static %} 
 <form action="" method="post" enctype="multipart/form-data">
-  <p><strong>Menu Name: </strong>{{ menu.name }}</p>
+  <p><strong>Menu Name: </strong><a href="{% url 'menu' %}">{{ menu.name }}</a></p>
   <p><strong>Description: </strong>{{ menu.description }}</p>
   <p><strong>Price: </strong> {{ menu.price }}</p>
   <img src="{{ menu.photo.url }}" width="200" height="200">
+  
+  <h4>Bookings</h4>
+  {% for booking in menu.booking_set.all %}
+  <hr>
+  <p>Booking Date: {{booking.booking_date}}</p>
+  <p>Phone No: {{booking.phone_no}}</p>
+  
+  {% endfor %}
+  {% if user.is_authenticated %}
+    <a href="{% url 'menu-booking' menu.id %}">Booking</a></p>
+  {% else %}
+    <p><a href="{% url 'login'%}?next={{request.path}}">Login</a>To Take Booking</p>
+  {% endif %} 
+  <p><a href="{% url 'menu' %}">Back to Menu</a></p>
 </form>
 {% endblock %}
