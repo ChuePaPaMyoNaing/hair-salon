@@ -2,13 +2,26 @@
 
 {% block content %}
 <p>Your Booking Menu: <a href="{% url 'menu-detail' menu.pk %}">{{menu.name}}</a></p>
-
+<head>
+<script>
+  function check_date() {
+    var inputted_date = document.getElementById("id_booking_date").value;
+    // alert(inputted_date)
+    "{% for booking in menu.booking_set.all %}"
+        if(inputted_date = booking_date){
+          alert(booking_date)
+          break;
+        }
+    "{% endfor %}"
+  }
+</script>
+</head>
 
 <form action="" method="post">
   {% csrf_token %}
   <table>
   {{ form.as_table }}
   </table>
-  <input type="submit" value="Submit" />    
+  <input type="submit" value="Submit" onclick="check_date()" />    
 </form>
 {% endblock %}

@@ -43,6 +43,7 @@ class Stylist(models.Model):
 class Booking(models.Model):
   menu = models.ForeignKey(Menu, on_delete=models.CASCADE)
   username = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+  stylist = models.ForeignKey(Stylist, on_delete=models.SET_NULL, null=True)
   phone_no = models.CharField(max_length=20)
   booking_date = models.DateTimeField(default=date.today)
     
@@ -51,4 +52,3 @@ class Booking(models.Model):
 
   def __str__(self):
     return self.username
-        
