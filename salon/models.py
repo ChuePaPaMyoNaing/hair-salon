@@ -28,7 +28,6 @@ class Stylist(models.Model):
   name = models.CharField(max_length=200)
   message = models.TextField(max_length=100)
   desgination = models.CharField(max_length=50)
-  # hairMenu = models.ForeignKey('Menu', on_delete=models.SET_NULL, null=True)
     
   class Meta:
     ordering = ["name"]

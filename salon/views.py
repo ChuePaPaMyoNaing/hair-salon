@@ -8,15 +8,13 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from .forms import BookingForm
 
 # Create your views here.
 
 def index(request):
 
-  context = {
-  }
-
-  return render(request, 'index.html', context=context)
+  return render(request, 'index.html')
 
 
 class MenuListView(generic.ListView):
@@ -37,7 +35,9 @@ class StylistDetailView(generic.DetailView):
 
 class BookingCreate(LoginRequiredMixin, CreateView):
   model = Booking
-  fields = ['username', 'phone_no', 'booking_date', 'stylist']
+  form_class = BookingForm
+  # fields = ['username', 'phone_no', 'booking_date', 'stylist']
+  
 
   def form_valid(self, form):
     form.instance.user = self.request.user
@@ -56,30 +56,6 @@ class BookingCreate(LoginRequiredMixin, CreateView):
     initial['username'] = username
     return initial  
 
+
   def get_success_url(self): 
     return reverse('menu-detail', kwargs={'pk': self.kwargs['pk'],})
-
-
-# class BookingCancel(LoginRequiredMixin, CreateView):
-#   model = Booking
-#   fields = ['username','booking_date']
-
-#   def form_valid(self, form):
-#     form.instance.user = self.request.user
-#     form.instance.menu=get_object_or_404(Menu, pk = self.kwargs['pk'])
-#     return super(BookingCancel, self).form_valid(form)
-
-
-#   def get_context_data(self, **kwargs):
-#     context = super(BookingCancel, self).get_context_data(**kwargs)
-#     context['menu'] = get_object_or_404(Menu, pk = self.kwargs['pk'])
-#     return context
-
-#   def get_initial(self):
-#     initial = super().get_initial()
-#     username = User.objects.get(username=self.request.user)
-#     initial['username'] = username
-#     return initial  
-
-#   def get_success_url(self): 
-#     return reverse('menu-detail', kwargs={'pk': self.kwargs['pk'],})
