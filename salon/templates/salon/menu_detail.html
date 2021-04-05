@@ -10,12 +10,12 @@
   
   <h4>Bookings</h4>
   {% for booking in menu.booking_set.all %}
-  <hr>
-  <p>Booking Date: {{booking.booking_date|date:"Y-m-d h:m:s"}}</p>
-  <p>Stylist Name: {{booking.stylist}}</p>
-  <p><a href="{% url 'booking-cancel' booking.id %}">Cancel</a></p>
-  
-
+    <hr>
+    <p>Booking Date: {{booking.booking_date|date:"Y-m-d h:m:s"}}</p>
+    <p>Stylist Name: {{booking.stylist}}</p>
+    {% if booking.username_id == user.id %} 
+      <p><a href="{% url 'booking-cancel' booking.id %}">Cancel</a></p>
+    {% endif %}
   {% endfor %}
   {% if user.is_authenticated %}
   <hr>
