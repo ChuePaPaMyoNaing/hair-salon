@@ -13,12 +13,14 @@
   <hr>
   <p>Booking Date: {{booking.booking_date|date:"Y-m-d h:m:s"}}</p>
   <p>Stylist Name: {{booking.stylist}}</p>
+  <p><a href="{% url 'booking-cancel' booking.id %}">Cancel</a></p>
 
   {% endfor %}
   {% if user.is_authenticated %}
     <p><a href="{% url 'menu-booking' menu.id %}">Booking</a></p>
   {% else %}
     <p><a href="{% url 'login'%}?next={{request.path}}">Login</a>to take booking</p>
+    <p><a href="{% url 'login'%}?next={{request.path}}">Login</a>to take booking cancel</p>
   {% endif %} 
   <p><a href="{% url 'menu' %}">Back to Menu</a></p>
 </form>

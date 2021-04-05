@@ -48,6 +48,7 @@ class Booking(models.Model):
     
   class Meta:
     ordering = ["menu"]
+    unique_together = (('booking_date', 'stylist'),)
 
   def __str__(self):
     return self.username

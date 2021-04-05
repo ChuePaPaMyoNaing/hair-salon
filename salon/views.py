@@ -35,8 +35,7 @@ class StylistDetailView(generic.DetailView):
 
 class BookingCreate(LoginRequiredMixin, CreateView):
   model = Booking
-  form_class = BookingForm
-  # fields = ['username', 'phone_no', 'booking_date', 'stylist']
+  fields = ['username', 'phone_no', 'booking_date', 'stylist']
   
 
   def form_valid(self, form):
@@ -56,6 +55,13 @@ class BookingCreate(LoginRequiredMixin, CreateView):
     initial['username'] = username
     return initial  
 
+
+  def get_success_url(self): 
+    return reverse('menu-detail', kwargs={'pk': self.kwargs['pk'],})
+
+
+class BookingCancel(LoginRequiredMixin, DeleteView):
+  model = Booking
 
   def get_success_url(self): 
     return reverse('menu-detail', kwargs={'pk': self.kwargs['pk'],})
